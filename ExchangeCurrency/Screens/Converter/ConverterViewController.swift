@@ -11,6 +11,8 @@ class ConverterViewController: UIViewController {
     
     var data: ParsedCurrencyData?
     
+    var viewModel: ConverterViewModelProtocol?
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -22,7 +24,9 @@ class ConverterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = data?.charCode
+        guard let data = data else { return }
+        viewModel = ConverterViewModel(data: data)
+        title = data.charCode
         // Do any additional setup after loading the view.
     }
     
@@ -55,7 +59,10 @@ class ConverterViewController: UIViewController {
 }
 
 extension ConverterViewController: UITableViewDelegate {
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
+        {
+            view.endEditing(true)
+        }
 }
 
 extension ConverterViewController: UITableViewDataSource {
@@ -69,9 +76,17 @@ extension ConverterViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: InfoConverterTableViewCell.identifier, for: indexPath) as? InfoConverterTableViewCell else { return UITableViewCell() }
             cell.configureCell(valute: data)
             return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { return UITableViewCell() }
+            cell.configureCell(valute: ParsedCurrencyData(charCode: "RUB", value: viewModel?.ruble ?? 0.0, name: "Российский рубль"))
+            cell.textFieldDelegate = self
+            cell.textFieldValue.delegate = self
+            return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { return UITableViewCell() }
-            cell.configureCell(valute: data)
+            cell.configureCell(valute: ParsedCurrencyData(charCode: data?.charCode ?? "", value: viewModel?.valute ?? 0.0, name: data?.name ?? ""))
+            cell.textFieldDelegate = self
+            cell.textFieldValue.delegate = self
             return cell
         }
         
@@ -86,4 +101,30 @@ extension ConverterViewController: UITableViewDataSource {
     }
     
     
+}
+
+extension ConverterViewController: TextFieldChangedValueDelegate {
+    func textFieldValueChanged(value: String, charCode: String?) {
+        let indexPath: IndexPath
+        let valueInDouble = Double(value) ?? 0.0
+        if charCode == "RUB" {
+            viewModel?.ruble = valueInDouble
+            viewModel?.convertRubleToValute()
+            indexPath = IndexPath(row: 2, section: 0)
+        } else {
+            viewModel?.valute = valueInDouble
+            viewModel?.convertValuteToRuble()
+            indexPath = IndexPath(row: 1, section: 0)
+        }
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
+     
+    
+}
+
+extension ConverterViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        //tableView.reloadData()
+    }
 }

@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol TextFieldChangedValueDelegate {
+    func textFieldValueChanged(value: String, charCode: String?)
+}
+
 class TextFieldTableViewCell: UITableViewCell {
     
     static let identifier = "TextFieldTableViewCell"
+    
+    var textFieldDelegate: TextFieldChangedValueDelegate?
     
     lazy var charCodeLabel: UILabel = {
         let label = UILabel()
@@ -18,11 +24,18 @@ class TextFieldTableViewCell: UITableViewCell {
     
     lazy var textFieldValue: UITextField = {
         let textField = UITextField()
+        textField.placeholder = "0.0"
         return textField
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        textFieldValue.addTarget(self, action: #selector(textFieldValueChanged), for: .editingChanged)
+    }
+    
+    @objc func textFieldValueChanged() {
+        print(textFieldValue.description)
+        textFieldDelegate?.textFieldValueChanged(value: textFieldValue.text ?? "0.0", charCode: charCodeLabel.text)
     }
     
     required init?(coder: NSCoder) {
@@ -53,7 +66,7 @@ class TextFieldTableViewCell: UITableViewCell {
     
     func configureCell(valute: ParsedCurrencyData?) {
         charCodeLabel.text = valute?.charCode
-        textFieldValue.text = "0"
+        textFieldValue.text = String(format: "%.1f", valute?.value ?? 0.0)
     }
 
     /*
@@ -71,5 +84,9 @@ class TextFieldTableViewCell: UITableViewCell {
 }
 
 extension TextFieldTableViewCell: TableViewCellProtocol {
+    
+}
+
+extension TextFieldTableViewCell: UITextFieldDelegate {
     
 }

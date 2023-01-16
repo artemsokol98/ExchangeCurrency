@@ -25,6 +25,7 @@
 		7169F0A629758E2F00CFA3D7 /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7169F0A529758E2F00CFA3D7 /* ConverterViewController.swift */; };
 		7169F0AD2975927E00CFA3D7 /* InfoConverterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7169F0AC2975927E00CFA3D7 /* InfoConverterTableViewCell.swift */; };
 		7169F0AF2975A07500CFA3D7 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7169F0AE2975A07500CFA3D7 /* TextFieldTableViewCell.swift */; };
+		7169F0B12975B8E600CFA3D7 /* ConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7169F0B02975B8E600CFA3D7 /* ConverterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		7169F0A529758E2F00CFA3D7 /* ConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
 		7169F0AC2975927E00CFA3D7 /* InfoConverterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoConverterTableViewCell.swift; sourceTree = "<group>"; };
 		7169F0AE2975A07500CFA3D7 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		7169F0B02975B8E600CFA3D7 /* ConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				7169F0A529758E2F00CFA3D7 /* ConverterViewController.swift */,
+				7169F0B02975B8E600CFA3D7 /* ConverterViewModel.swift */,
 				7169F0AC2975927E00CFA3D7 /* InfoConverterTableViewCell.swift */,
 				7169F0AE2975A07500CFA3D7 /* TextFieldTableViewCell.swift */,
 			);
@@ -326,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7169F0A0297574F700CFA3D7 /* MainViewModel.swift in Sources */,
+				7169F0B12975B8E600CFA3D7 /* ConverterViewModel.swift in Sources */,
 				7169F06D2975733F00CFA3D7 /* MainViewController.swift in Sources */,
 				7169F0692975733F00CFA3D7 /* AppDelegate.swift in Sources */,
 				7169F0AF2975A07500CFA3D7 /* TextFieldTableViewCell.swift in Sources */,
