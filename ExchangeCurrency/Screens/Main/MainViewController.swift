@@ -49,7 +49,7 @@ class MainViewController: UIViewController {
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        textDatePicker.text = DateFormatter().string(from: date)
+        textDatePicker.text = dateFormatter.string(from: date)
 
         return textDatePicker
     }()
@@ -60,6 +60,10 @@ class MainViewController: UIViewController {
        formatter.dateFormat = "dd/MM/yyyy"
         textDatePicker.text = formatter.string(from: datePicker.date)
         
+        let formatterForRequest = DateFormatter()
+        formatterForRequest.dateFormat = "yyyy/MM/dd"
+        print(formatterForRequest.string(from: datePicker.date))
+        sendRequest(url: "https://www.cbr-xml-daily.ru/archive/" + formatterForRequest.string(from: datePicker.date) + "/daily_json.js")
        self.view.endEditing(true)
      }
     
@@ -86,9 +90,13 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Money"
+        title = "Валюты"
         viewModel = MainViewModel()
-        viewModel?.fetchData { [weak self] result in
+        sendRequest(url: "https://www.cbr-xml-daily.ru/daily_json.js")
+    }
+    
+    func sendRequest(url: String) {
+        viewModel?.fetchData(url: url) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(()):

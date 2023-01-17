@@ -9,15 +9,17 @@ import Foundation
 
 protocol MainViewModelProtocol {
     var parsedData: [ParsedCurrencyData] { get set }
-    func fetchData(completion: @escaping (Result<Void,Error>) -> Void)
+    func fetchData(url:String, completion: @escaping (Result<Void,Error>) -> Void)
 }
 
 class MainViewModel: MainViewModelProtocol {
     
     var parsedData = [ParsedCurrencyData]()
     
-    func fetchData(completion: @escaping (Result<Void,Error>) -> Void) {
-        NetworkManager.shared.fetchInformation(urlString: "https://www.cbr-xml-daily.ru/daily_json.js", expectingType: Currency.self) { result in
+    let apiStringForDate = "www.cbr-xml-daily.ru/archive/2023/01/17/daily_json.js"
+    
+    func fetchData(url:String, completion: @escaping (Result<Void,Error>) -> Void) {
+        NetworkManager.shared.fetchInformation(urlString: url, expectingType: Currency.self) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
