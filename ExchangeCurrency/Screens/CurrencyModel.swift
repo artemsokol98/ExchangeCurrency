@@ -38,3 +38,7 @@ struct Valute: Decodable {
         case previous = "Previous"
     }
 }
+
+public class DataForCache: NSObject {
+    var data: [String: Valute]?
+}
