@@ -16,8 +16,10 @@ class DataManager {
     
     func createNewItemForCurrency(urlStringWithDate: String, valute: [String: Valute]) {
         let newItem = CurrencyArrayCache(context: context)
+        
+        let valuteCache = DataForCache(data: valute)
         newItem.date = urlStringWithDate
-        newItem.arrayWithCurrencies?.data = valute
+        newItem.arrayWithCurrencies = valuteCache
         do {
             try context.save()
         } catch {
@@ -29,16 +31,16 @@ class DataManager {
         let request = CurrencyArrayCache.fetchRequest() as NSFetchRequest<CurrencyArrayCache>
         request.predicate = NSPredicate(format: "date == %@", urlStringWithDate)
         
-        do {
-            guard let data = try? context.fetch(request) else {
-                throw CoreDataErrors.CouldntFetchFromEntity
-            
-            }
+        // do {
+            guard let data = try? context.fetch(request) else { throw CoreDataErrors.CouldntFetchFromEntity }
+        print(data.first?.arrayWithCurrencies)
+        print(data.first?.arrayWithCurrencies?.data)
+        print(data.first?.date)
             return data.first?.arrayWithCurrencies?.data
-        } catch {
-            
-        }
-        return nil
+//        } catch {
+//
+//        }
+       // return nil
     }
 }
 

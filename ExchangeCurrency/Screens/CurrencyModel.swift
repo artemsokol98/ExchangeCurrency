@@ -40,5 +40,9 @@ struct Valute: Decodable {
 }
 
 public class DataForCache: NSObject {
-    var data: [String: Valute]?
+    var data: [String: Valute]
+    
+    init(data: [String: Valute]) {
+        self.data = data
+    }
 }
