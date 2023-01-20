@@ -14,11 +14,15 @@ class CurrencyCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
 //        label.numberOfLines = 0
 //        label.font = .systemFont(ofSize: Constants.nameOfCellLabelDetailViewFontSize)
-        return label
+        label.font = .systemFont(ofSize: 30.0, weight: .bold)
+        label.textColor = UIColor(red: 83.0/255.0, green: 148.0/255.0, blue: 227.0/255.0, alpha: 1.0)
+        return label // 83 148 227
     }()
     
     lazy var currencyValue: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 20.0, weight: .regular)
+        label.textColor = UIColor(red: 172.0/255.0, green: 174.0/255.0, blue: 188.0/255.0, alpha: 1.0)
         return label
     }()
     
@@ -26,6 +30,8 @@ class CurrencyCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addSubview(currencyCode)
         contentView.addSubview(currencyValue)
+        backgroundColor = UIColor(red: 242.0/255.0, green: 245.0/255.0, blue: 250.0/255.0, alpha: 1.0)
+        layer.cornerRadius = contentView.bounds.width * 0.1
     }
     
     required init?(coder: NSCoder) {
@@ -40,7 +46,7 @@ class CurrencyCollectionViewCell: UICollectionViewCell {
         
         let currencyCodeConstraints = [
             currencyCode.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            currencyCode.topAnchor.constraint(equalTo: contentView.topAnchor, constant: contentView.bounds.height * 0.1),
+            currencyCode.topAnchor.constraint(equalTo: contentView.topAnchor, constant: contentView.bounds.height * 0.2),
             currencyCode.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -contentView.bounds.height * 0.6)
         ]
         
@@ -55,7 +61,8 @@ class CurrencyCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(valute: ParsedCurrencyData?) {
+        let value = String(format: "%.2f", valute?.value ?? 0) + "₽"
         currencyCode.text = valute?.charCode
-        currencyValue.text = valute?.value.description
+        currencyValue.text = value
     }
 }

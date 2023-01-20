@@ -25,12 +25,21 @@ class TextFieldTableViewCell: UITableViewCell {
     lazy var textFieldValue: UITextField = {
         let textField = UITextField()
         textField.placeholder = "0.0"
+        textField.font = .systemFont(ofSize: 30.0, weight: .semibold)
+        textField.keyboardType = .decimalPad
         return textField
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         textFieldValue.addTarget(self, action: #selector(textFieldValueChanged), for: .editingChanged)
+        
+        
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0.0, y: textFieldValue.frame.height - 1, width: textFieldValue.frame.width, height: 1.0)
+        bottomLine.backgroundColor = UIColor.black.cgColor
+        textFieldValue.borderStyle = UITextField.BorderStyle.none
+        textFieldValue.layer.addSublayer(bottomLine)
     }
     
     @objc func textFieldValueChanged() {
@@ -50,14 +59,15 @@ class TextFieldTableViewCell: UITableViewCell {
         textFieldValue.translatesAutoresizingMaskIntoConstraints = false
         
         let charCodeLabelConstraints = [
-            charCodeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * 0.1),
-            charCodeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: contentView.bounds.height * 0.1),
-            charCodeLabel.bottomAnchor.constraint(equalTo: textFieldValue.topAnchor, constant: contentView.bounds.height * 0.1)
+            charCodeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * 0.05),
+            charCodeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: contentView.bounds.height * 0.05),
+            charCodeLabel.bottomAnchor.constraint(equalTo: textFieldValue.topAnchor, constant: contentView.bounds.height * 0.05)
         ]
         
         let textFieldValueConstraints = [
-            textFieldValue.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * 0.1),
-            textFieldValue.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -contentView.bounds.height * 0.1)
+            textFieldValue.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * 0.05),
+            textFieldValue.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -contentView.bounds.height * 0.05),
+            textFieldValue.heightAnchor.constraint(equalToConstant: contentView.bounds.height * 0.2)
         ]
         
         NSLayoutConstraint.activate(charCodeLabelConstraints)
