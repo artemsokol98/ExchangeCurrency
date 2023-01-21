@@ -27,6 +27,8 @@ class TextFieldTableViewCell: UITableViewCell {
         textField.placeholder = "0.0"
         textField.font = .systemFont(ofSize: 30.0, weight: .semibold)
         textField.keyboardType = .decimalPad
+        textField.underlined(color: .black)
+        //textField.borderStyle = .roundedRect
         return textField
     }()
     
@@ -34,12 +36,13 @@ class TextFieldTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         textFieldValue.addTarget(self, action: #selector(textFieldValueChanged), for: .editingChanged)
         
-        
+        /*
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0.0, y: textFieldValue.frame.height - 1, width: textFieldValue.frame.width, height: 1.0)
         bottomLine.backgroundColor = UIColor.black.cgColor
-        textFieldValue.borderStyle = UITextField.BorderStyle.none
+        textFieldValue.borderStyle = UITextField.BorderStyle.roundedRect
         textFieldValue.layer.addSublayer(bottomLine)
+         */
     }
     
     @objc func textFieldValueChanged() {
@@ -67,7 +70,7 @@ class TextFieldTableViewCell: UITableViewCell {
         let textFieldValueConstraints = [
             textFieldValue.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * 0.05),
             textFieldValue.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -contentView.bounds.height * 0.05),
-            textFieldValue.heightAnchor.constraint(equalToConstant: contentView.bounds.height * 0.2)
+            textFieldValue.heightAnchor.constraint(equalToConstant: contentView.bounds.height * 0.4)
         ]
         
         NSLayoutConstraint.activate(charCodeLabelConstraints)
@@ -78,19 +81,6 @@ class TextFieldTableViewCell: UITableViewCell {
         charCodeLabel.text = valute?.charCode
         textFieldValue.text = String(format: "%.1f", valute?.value ?? 0.0)
     }
-
-    /*
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-*/
 }
 
 extension TextFieldTableViewCell: TableViewCellProtocol {
@@ -99,4 +89,18 @@ extension TextFieldTableViewCell: TableViewCellProtocol {
 
 extension TextFieldTableViewCell: UITextFieldDelegate {
     
+}
+
+extension UITextField {
+    func underlined(color:UIColor){
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = color.cgColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
+        border.borderWidth = width
+        self.layer.addSublayer(border)
+        self.layer.masksToBounds = true
+    }
+    
+
 }

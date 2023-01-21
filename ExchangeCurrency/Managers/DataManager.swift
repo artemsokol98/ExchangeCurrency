@@ -30,17 +30,8 @@ class DataManager {
     func getCurrencyFromCache(urlStringWithDate: String) throws -> [String: Valute]? {
         let request = CurrencyArrayCache.fetchRequest() as NSFetchRequest<CurrencyArrayCache>
         request.predicate = NSPredicate(format: "date == %@", urlStringWithDate)
-        
-        // do {
-            guard let data = try? context.fetch(request) else { throw CoreDataErrors.CouldntFetchFromEntity }
-        print(data.first?.arrayWithCurrencies)
-        print(data.first?.arrayWithCurrencies?.data)
-        print(data.first?.date)
-            return data.first?.arrayWithCurrencies?.data
-//        } catch {
-//
-//        }
-       // return nil
+        guard let data = try? context.fetch(request) else { throw CoreDataErrors.CouldntFetchFromEntity }
+        return data.first?.arrayWithCurrencies?.data
     }
 }
 

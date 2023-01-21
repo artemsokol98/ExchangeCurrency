@@ -28,6 +28,8 @@ class ConverterViewController: UIViewController {
         viewModel = ConverterViewModel(data: data)
         title = data.charCode
         overrideUserInterfaceStyle = .light
+//        tableView.separatorStyle = .singleLine
+//        tableView.separatorColor = .black
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -61,18 +63,6 @@ class ConverterViewController: UIViewController {
             self.view.frame.origin.y = 0
         }
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension ConverterViewController: UITableViewDelegate {
@@ -116,7 +106,7 @@ extension ConverterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0: return 200.0
-        default: return 150.0
+        default: return 100.0
         }
     }
     
@@ -148,3 +138,4 @@ extension ConverterViewController: UITextFieldDelegate {
         //tableView.reloadData()
     }
 }
+
