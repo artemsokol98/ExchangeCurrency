@@ -31,6 +31,7 @@ class MainViewController: UIViewController {
     lazy var textDatePicker: UITextField = {
         let textDatePicker = UITextField() //frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: view.bounds.width, height: view.bounds.height * 0.01)))
         textDatePicker.borderStyle = .roundedRect
+        textDatePicker.addTarget(self, action: #selector(alertController), for: .touchDown)
 //        textDatePicker.layer.borderWidth = 15
 //        textDatePicker.layer.borderColor = CGColor(gray: 1.0, alpha: 1.0)
 //        textDatePicker.layer.backgroundColor = CGColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
@@ -38,6 +39,24 @@ class MainViewController: UIViewController {
 //        let datePicker = UIDatePicker()
 //        datePicker.datePickerMode = .date
         
+        
+        
+       
+        
+        //textDatePicker.inputAccessoryView =
+        /*
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addDatePicker(mode: .dateAndTime, date: date, minimumDate: minDate, maximumDate: maxDate) { date in
+            // action with selected date
+        }
+        alert.add
+        alert.addAction(saveAlertAction)
+        present(alert, animated: true)
+        */
+        //alertSheet.view.addSubview(datePicker)
+       // present(alertSheet, animated: true)
+        
+        /*
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
@@ -49,7 +68,7 @@ class MainViewController: UIViewController {
         
         textDatePicker.inputAccessoryView = toolbar
         textDatePicker.inputView = datePicker
-        
+        */
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
@@ -57,6 +76,54 @@ class MainViewController: UIViewController {
 
         return textDatePicker
     }()
+    
+    @objc func alertController() {
+        /*
+        let myDatePicker: UIDatePicker = UIDatePicker()
+        myDatePicker.timeZone = .current
+            myDatePicker.preferredDatePickerStyle = .wheels
+        */
+        datePicker.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 200)
+        let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
+        alertController.view.addSubview(datePicker)
+        /*
+        let selectAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+            print("Selected Date: \(self.datePicker.date)")
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        */
+        
+        let saveAlertAction = UIAlertAction(title: "Сохранить", style: .default) { _ in
+            self.donedatePicker()
+        }
+        let cancelAlertAction = UIAlertAction(title: "Отмена", style: .default, handler: nil)
+        
+        alertController.addAction(saveAlertAction)
+        alertController.addAction(cancelAlertAction)
+        present(alertController, animated: true)
+        /*
+        let alertSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let rect = CGRect(x: 0, y: -300, width: alertSheet.view.bounds.size.width, height: 300)
+        var datePickerView = UIView(frame: rect)
+        
+        datePickerView.addSubview(datePicker)
+        datePickerView.backgroundColor = .white
+        alertSheet.view.addSubview(datePickerView)
+        
+        let saveAlertAction = UIAlertAction(title: "Сохранить", style: .default) { _ in
+            self.donedatePicker()
+        }
+        let cancelAlertAction = UIAlertAction(title: "Отмена", style: .default) { _ in
+            self.cancelDatePicker()
+        }
+        
+        
+        alertSheet.addAction(saveAlertAction)
+        alertSheet.addAction(cancelAlertAction)
+        
+        present(alertSheet, animated: true)
+         */
+    }
     
     @objc func donedatePicker(){
 
@@ -68,7 +135,7 @@ class MainViewController: UIViewController {
         formatterForRequest.dateFormat = "yyyy/MM/dd"
         print(formatterForRequest.string(from: datePicker.date))
         sendRequest(url: "https://www.cbr-xml-daily.ru/archive/" + formatterForRequest.string(from: datePicker.date) + "/daily_json.js")
-       self.view.endEditing(true)
+       // self.view.endEditing(true)
      }
     
     @objc func cancelDatePicker(){
@@ -103,6 +170,7 @@ class MainViewController: UIViewController {
         viewModel = MainViewModel()
         sendRequest(url: "https://www.cbr-xml-daily.ru/daily_json.js")
         overrideUserInterfaceStyle = .light
+        //alertController()
     }
     
     func sendRequest(url: String) {
@@ -199,7 +267,8 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         let totalSpacing = ((numberOfItemsPerRow - 1) * spacingBetweenCells) //Amount of total spacing in a row
         print(totalSpacing)
         print(collectionView.bounds.width)
-        let width = (collectionView.bounds.width - totalSpacing) / numberOfItemsPerRow
+        let width = floor((collectionView.bounds.width - totalSpacing) / numberOfItemsPerRow)
+        print(width)
         return CGSize(width: width, height: width)
                 
         //(2 * self.spacing) +

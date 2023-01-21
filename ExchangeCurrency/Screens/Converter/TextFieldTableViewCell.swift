@@ -27,8 +27,15 @@ class TextFieldTableViewCell: UITableViewCell {
         textField.placeholder = "0.0"
         textField.font = .systemFont(ofSize: 30.0, weight: .semibold)
         textField.keyboardType = .decimalPad
-        textField.underlined(color: .black)
+        //textField.underlined(color: .black)
         //textField.borderStyle = .roundedRect
+        let bottomLine = CALayer()
+        
+        bottomLine.frame = CGRect(origin: CGPoint(x: 0, y: self.bounds.height), size: CGSize(width: self.bounds.width, height: 1)) //CGRect(x: self.bounds.width * 0.9, y: self.frame.height, width: -self.bounds.width * 0.9, height: 1)
+        bottomLine.backgroundColor = UIColor.lightGray.cgColor
+        //textFieldValue.borderStyle = UITextField.BorderStyle.roundedRect
+        textField.layer.addSublayer(bottomLine)
+        
         return textField
     }()
     
@@ -36,13 +43,9 @@ class TextFieldTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         textFieldValue.addTarget(self, action: #selector(textFieldValueChanged), for: .editingChanged)
         
-        /*
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0.0, y: textFieldValue.frame.height - 1, width: textFieldValue.frame.width, height: 1.0)
-        bottomLine.backgroundColor = UIColor.black.cgColor
-        textFieldValue.borderStyle = UITextField.BorderStyle.roundedRect
-        textFieldValue.layer.addSublayer(bottomLine)
-         */
+        
+        
+         
     }
     
     @objc func textFieldValueChanged() {
