@@ -12,17 +12,16 @@ class CurrencyCollectionViewCell: UICollectionViewCell {
     
     lazy var currencyCode: UILabel = {
         let label = UILabel()
-//        label.numberOfLines = 0
-//        label.font = .systemFont(ofSize: Constants.nameOfCellLabelDetailViewFontSize)
-        label.font = .systemFont(ofSize: 30.0, weight: .bold)
-        label.textColor = UIColor(red: 83.0/255.0, green: 148.0/255.0, blue: 227.0/255.0, alpha: 1.0)
-        return label // 83 148 227
+        print(contentView.bounds.width)
+        label.font = .systemFont(ofSize: self.bounds.width * 0.3, weight: .bold) //30.0
+        label.textColor = Color.lightBlue
+        return label
     }()
     
     lazy var currencyValue: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20.0, weight: .regular)
-        label.textColor = UIColor(red: 172.0/255.0, green: 174.0/255.0, blue: 188.0/255.0, alpha: 1.0)
+        label.font = .systemFont(ofSize: self.bounds.width * 0.2, weight: .regular)
+        label.textColor = Color.lightGray
         return label
     }()
     
@@ -30,7 +29,7 @@ class CurrencyCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addSubview(currencyCode)
         contentView.addSubview(currencyValue)
-        backgroundColor = UIColor(red: 242.0/255.0, green: 245.0/255.0, blue: 250.0/255.0, alpha: 1.0)
+        backgroundColor = Color.backgroundLightBlue
         layer.cornerRadius = contentView.bounds.width * 0.1
     }
     
@@ -47,7 +46,7 @@ class CurrencyCollectionViewCell: UICollectionViewCell {
         let currencyCodeConstraints = [
             currencyCode.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             currencyCode.topAnchor.constraint(equalTo: contentView.topAnchor, constant: contentView.bounds.height * 0.2),
-            currencyCode.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -contentView.bounds.height * 0.6)
+            currencyCode.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -contentView.bounds.height * 0.5)
         ]
         
         let currencyValueConstraints = [

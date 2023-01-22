@@ -27,10 +27,7 @@ class ConverterViewController: UIViewController {
         guard let data = data else { return }
         viewModel = ConverterViewModel(data: data)
         title = data.charCode
-        overrideUserInterfaceStyle = .light
-//        tableView.separatorStyle = .singleLine
-//        tableView.separatorColor = .black
-        
+        overrideUserInterfaceStyle = .light        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -80,7 +77,6 @@ extension ConverterViewController: UITableViewDataSource {
         3
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell: TableViewCellProtocol
         switch indexPath.row {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: InfoConverterTableViewCell.identifier, for: indexPath) as? InfoConverterTableViewCell else { return UITableViewCell() }
@@ -99,8 +95,6 @@ extension ConverterViewController: UITableViewDataSource {
             cell.textFieldValue.delegate = self
             return cell
         }
-        
-        //return cell as?
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -109,8 +103,6 @@ extension ConverterViewController: UITableViewDataSource {
         default: return 100.0
         }
     }
-    
-    
 }
 
 extension ConverterViewController: TextFieldChangedValueDelegate {
@@ -135,7 +127,6 @@ extension ConverterViewController: TextFieldChangedValueDelegate {
 
 extension ConverterViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        //tableView.reloadData()
     }
 }
 

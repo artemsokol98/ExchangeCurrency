@@ -39,6 +39,7 @@ struct Valute: Decodable {
     }
 }
 
+// MARK: - Format data for cache
 public class DataForCache: NSObject {
     var data: [String: Valute]
     

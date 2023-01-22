@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol TableViewCellProtocol {
-    
-}
-
 class InfoConverterTableViewCell: UITableViewCell {
     
     static let identifier = "InfoConverterTableViewCell"
@@ -35,7 +31,7 @@ class InfoConverterTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor(red: 242.0/255.0, green: 245.0/255.0, blue: 250.0/255.0, alpha: 1.0)
+        backgroundColor = Color.backgroundLightBlue
         labelCourse.text = "Курс"
     }
     
@@ -58,7 +54,6 @@ class InfoConverterTableViewCell: UITableViewCell {
             nameCurrency.bottomAnchor.constraint(equalTo: labelCourse.topAnchor, constant: -contentView.bounds.height * 0.05),
             nameCurrency.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * 0.05),
             nameCurrency.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -contentView.bounds.width * 0.05)
-            
         ]
         
         let labelCourseConstraints = [
@@ -70,7 +65,6 @@ class InfoConverterTableViewCell: UITableViewCell {
             valueCurrency.topAnchor.constraint(equalTo: labelCourse.bottomAnchor, constant: -contentView.bounds.height * 0.05),
             valueCurrency.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: contentView.bounds.height * 0.05),
             valueCurrency.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * 0.05)
-
         ]
         
         NSLayoutConstraint.activate(nameCurrencyConstraints)
@@ -83,22 +77,4 @@ class InfoConverterTableViewCell: UITableViewCell {
         nameCurrency.text = valute?.name
         valueCurrency.text = value
     }
-    
-/*
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-*/
 }
-
-extension InfoConverterTableViewCell: TableViewCellProtocol {
-    
-}
-

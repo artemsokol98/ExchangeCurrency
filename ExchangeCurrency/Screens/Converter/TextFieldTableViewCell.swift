@@ -27,13 +27,10 @@ class TextFieldTableViewCell: UITableViewCell {
         textField.placeholder = "0.0"
         textField.font = .systemFont(ofSize: 30.0, weight: .semibold)
         textField.keyboardType = .decimalPad
-        //textField.underlined(color: .black)
-        //textField.borderStyle = .roundedRect
-        let bottomLine = CALayer()
         
-        bottomLine.frame = CGRect(origin: CGPoint(x: 0, y: self.bounds.height), size: CGSize(width: self.bounds.width, height: 1)) //CGRect(x: self.bounds.width * 0.9, y: self.frame.height, width: -self.bounds.width * 0.9, height: 1)
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect(origin: CGPoint(x: 0, y: self.bounds.height), size: CGSize(width: self.bounds.width, height: 1))
         bottomLine.backgroundColor = UIColor.lightGray.cgColor
-        //textFieldValue.borderStyle = UITextField.BorderStyle.roundedRect
         textField.layer.addSublayer(bottomLine)
         
         return textField
@@ -42,10 +39,6 @@ class TextFieldTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         textFieldValue.addTarget(self, action: #selector(textFieldValueChanged), for: .editingChanged)
-        
-        
-        
-         
     }
     
     @objc func textFieldValueChanged() {
@@ -85,15 +78,11 @@ class TextFieldTableViewCell: UITableViewCell {
         textFieldValue.text = String(format: "%.1f", valute?.value ?? 0.0)
     }
 }
-
-extension TextFieldTableViewCell: TableViewCellProtocol {
-    
-}
-
+/*
 extension TextFieldTableViewCell: UITextFieldDelegate {
     
 }
-
+*/
 extension UITextField {
     func underlined(color:UIColor){
         let border = CALayer()

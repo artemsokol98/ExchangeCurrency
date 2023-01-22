@@ -25,12 +25,10 @@ class ConverterViewModel: ConverterViewModelProtocol {
     }
     
     func convertValuteToRuble() {
-        //guard let doubleValue = Double(string) else { return 0 }
         ruble = valute * dataAboutCurrency.value
     }
     
     func convertRubleToValute() {
-        //guard let doubleValue = Double(string) else { return 0 }
         valute = ruble / dataAboutCurrency.value
     }
 }

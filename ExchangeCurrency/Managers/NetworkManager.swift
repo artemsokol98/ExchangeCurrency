@@ -10,7 +10,6 @@ import Foundation
 class NetworkManager {
     static let shared = NetworkManager()
     
-    // let apiString = "https://www.cbr-xml-daily.ru/daily_json.js"
     let sessionConfig = URLSessionConfiguration.default
     
     func fetchInformation<T: Decodable>(urlString: String, expectingType: T.Type, completion: @escaping (Result<Any,Error>) -> Void) {

@@ -19,8 +19,6 @@ class MainViewController: UIViewController {
         datePicker.preferredDatePickerStyle = .wheels
         let calendar = Calendar.current
         let currentYear = calendar.component(.year, from: Date())
-//        let currentMonth = calendar.component(.month, from: Date())
-//        let currentDay = calendar.component(.day, from: Date())
         guard let maximumDate = calendar.date(from: DateComponents(year: currentYear + 1))?.addingTimeInterval(-1) else {
             fatalError("Couldn't get next year")
         }
@@ -42,7 +40,7 @@ class MainViewController: UIViewController {
     
     @objc func alertController() {
         datePicker.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 200)
-        let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
         alertController.view.addSubview(datePicker)
         
         let saveAlertAction = UIAlertAction(title: "Сохранить", style: .default) { _ in
@@ -70,7 +68,6 @@ class MainViewController: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        
         layout.sectionInset = UIEdgeInsets(
             top: spacing,
             left: spacing,
@@ -135,20 +132,17 @@ class MainViewController: UIViewController {
         textDatePicker.translatesAutoresizingMaskIntoConstraints = false
         
         let collectionViewConstraints = [
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor), //, constant: spacing
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor), // , constant: -spacing
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             collectionView.topAnchor.constraint(equalTo: textDatePicker.bottomAnchor, constant: view.bounds.height * 0.01)
-            //collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.bounds.height * 0.5)
         ]
         
         let datePickerConstraints = [
-            textDatePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: spacing), //view.bounds.width * 0.1
-            textDatePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -spacing), // view.bounds.width * 0.1
+            textDatePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: spacing),
+            textDatePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -spacing),
             textDatePicker.topAnchor.constraint(equalTo: view.topAnchor, constant: view.bounds.height * 0.15),
             textDatePicker.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.05)
-           // textDatePicker.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: view.bounds.height * 0.1)
-            //textDatePicker.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.bounds.height * 0.5)
         ]
         
         NSLayoutConstraint.activate(collectionViewConstraints)
@@ -160,8 +154,6 @@ class MainViewController: UIViewController {
         guard let index = sender as? Int else { return }
         destanation.data = viewModel?.parsedData[index]
     }
-
-
 }
 
 // MARK: - CollectionView
@@ -189,11 +181,8 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfItemsPerRow:CGFloat = 3
         let spacingBetweenCells:CGFloat = 10.0
-        let totalSpacing = self.spacing * 2 + ((numberOfItemsPerRow - 1) * spacingBetweenCells) //Amount of total spacing in a row
-        print(totalSpacing)
-        print(collectionView.bounds.width)
+        let totalSpacing = self.spacing * 2 + ((numberOfItemsPerRow - 1) * spacingBetweenCells) // Amount of total spacing in a row
         let width = floor((collectionView.bounds.width - totalSpacing) / numberOfItemsPerRow)
-        print(width)
         return CGSize(width: width, height: width)
-}
+    }
 }
