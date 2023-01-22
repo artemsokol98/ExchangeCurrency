@@ -78,11 +78,7 @@ class TextFieldTableViewCell: UITableViewCell {
         textFieldValue.text = String(format: "%.1f", valute?.value ?? 0.0)
     }
 }
-/*
-extension TextFieldTableViewCell: UITextFieldDelegate {
-    
-}
-*/
+
 extension UITextField {
     func underlined(color:UIColor){
         let border = CALayer()

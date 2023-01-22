@@ -13,7 +13,7 @@ class CurrencyCollectionViewCell: UICollectionViewCell {
     lazy var currencyCode: UILabel = {
         let label = UILabel()
         print(contentView.bounds.width)
-        label.font = .systemFont(ofSize: self.bounds.width * 0.3, weight: .bold) //30.0
+        label.font = .systemFont(ofSize: self.bounds.width * 0.3, weight: .bold) 
         label.textColor = Color.lightBlue
         return label
     }()
