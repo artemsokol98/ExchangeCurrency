@@ -49,7 +49,7 @@ class ConverterViewController: UIViewController {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 && self.view.frame.height < 600 {
+            if self.view.frame.origin.y == 0 && self.view.frame.height < Constants.minimalHeightOfScreenForMovingUp {
                 self.view.frame.origin.y -= keyboardSize.height
             }
         }
@@ -99,8 +99,8 @@ extension ConverterViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
-        case 0: return 200.0
-        default: return 100.0
+        case 0: return Constants.heightOfFirstRow
+        default: return Constants.heightOfSecondAndThirdRow
         }
     }
 }
@@ -120,13 +120,9 @@ extension ConverterViewController: TextFieldChangedValueDelegate {
         }
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
-    
-     
-    
 }
 
 extension ConverterViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-    }
+ 
 }
 

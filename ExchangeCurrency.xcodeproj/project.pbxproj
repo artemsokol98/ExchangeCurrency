@@ -26,12 +26,13 @@
 		7169F0AD2975927E00CFA3D7 /* InfoConverterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7169F0AC2975927E00CFA3D7 /* InfoConverterTableViewCell.swift */; };
 		7169F0AF2975A07500CFA3D7 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7169F0AE2975A07500CFA3D7 /* TextFieldTableViewCell.swift */; };
 		7169F0B12975B8E600CFA3D7 /* ConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7169F0B02975B8E600CFA3D7 /* ConverterViewModel.swift */; };
+		71737425297E7796005C96AB /* DataForCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71737424297E7796005C96AB /* DataForCacheModel.swift */; };
+		71737428297E790E005C96AB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71737427297E790E005C96AB /* Strings.swift */; };
 		71CFAA102978817F00DF0E11 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFAA0F2978817F00DF0E11 /* DataManager.swift */; };
 		71CFAA1B2978895000DF0E11 /* CurrencyArrayCacheTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFAA1A2978895000DF0E11 /* CurrencyArrayCacheTransformer.swift */; };
 		71CFAA262978905A00DF0E11 /* CurrencyArrayCache+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFAA242978905A00DF0E11 /* CurrencyArrayCache+CoreDataClass.swift */; };
 		71CFAA272978905A00DF0E11 /* CurrencyArrayCache+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFAA252978905A00DF0E11 /* CurrencyArrayCache+CoreDataProperties.swift */; };
 		71E4CB34297D420E00060E32 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E4CB33297D420E00060E32 /* Constants.swift */; };
-		71E4CB36297D424300060E32 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E4CB35297D424300060E32 /* Strings.swift */; };
 		71E4CB38297D53D400060E32 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E4CB37297D53D400060E32 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,12 +77,13 @@
 		7169F0AC2975927E00CFA3D7 /* InfoConverterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoConverterTableViewCell.swift; sourceTree = "<group>"; };
 		7169F0AE2975A07500CFA3D7 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		7169F0B02975B8E600CFA3D7 /* ConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewModel.swift; sourceTree = "<group>"; };
+		71737424297E7796005C96AB /* DataForCacheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataForCacheModel.swift; sourceTree = "<group>"; };
+		71737427297E790E005C96AB /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		71CFAA0F2978817F00DF0E11 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		71CFAA1A2978895000DF0E11 /* CurrencyArrayCacheTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyArrayCacheTransformer.swift; sourceTree = "<group>"; };
 		71CFAA242978905A00DF0E11 /* CurrencyArrayCache+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyArrayCache+CoreDataClass.swift"; sourceTree = "<group>"; };
 		71CFAA252978905A00DF0E11 /* CurrencyArrayCache+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyArrayCache+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		71E4CB33297D420E00060E32 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		71E4CB35297D424300060E32 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		71E4CB37297D53D400060E32 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,8 +180,6 @@
 			children = (
 				7169F0AA297591C300CFA3D7 /* Main */,
 				7169F0AB297591CA00CFA3D7 /* Converter */,
-				7169F0A12975768C00CFA3D7 /* ParsedCurrencyData.swift */,
-				7169F09D2975745600CFA3D7 /* CurrencyModel.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -187,6 +187,7 @@
 		7169F0A9297591A700CFA3D7 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				71737426297E78A9005C96AB /* Models */,
 				7169F09B297573F100CFA3D7 /* NetworkManager.swift */,
 				71CFAA0F2978817F00DF0E11 /* DataManager.swift */,
 			);
@@ -214,12 +215,22 @@
 			path = Converter;
 			sourceTree = "<group>";
 		};
+		71737426297E78A9005C96AB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7169F0A12975768C00CFA3D7 /* ParsedCurrencyData.swift */,
+				7169F09D2975745600CFA3D7 /* CurrencyModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		71CFAA112978844B00DF0E11 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
 				71CFAA1A2978895000DF0E11 /* CurrencyArrayCacheTransformer.swift */,
 				71CFAA242978905A00DF0E11 /* CurrencyArrayCache+CoreDataClass.swift */,
 				71CFAA252978905A00DF0E11 /* CurrencyArrayCache+CoreDataProperties.swift */,
+				71737424297E7796005C96AB /* DataForCacheModel.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -228,7 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				71E4CB33297D420E00060E32 /* Constants.swift */,
-				71E4CB35297D424300060E32 /* Strings.swift */,
+				71737427297E790E005C96AB /* Strings.swift */,
 				71E4CB37297D53D400060E32 /* Colors.swift */,
 			);
 			path = Helpers;
@@ -371,7 +382,6 @@
 				7169F0B12975B8E600CFA3D7 /* ConverterViewModel.swift in Sources */,
 				7169F06D2975733F00CFA3D7 /* MainViewController.swift in Sources */,
 				71CFAA262978905A00DF0E11 /* CurrencyArrayCache+CoreDataClass.swift in Sources */,
-				71E4CB36297D424300060E32 /* Strings.swift in Sources */,
 				71CFAA102978817F00DF0E11 /* DataManager.swift in Sources */,
 				7169F0692975733F00CFA3D7 /* AppDelegate.swift in Sources */,
 				7169F0AF2975A07500CFA3D7 /* TextFieldTableViewCell.swift in Sources */,
@@ -379,6 +389,8 @@
 				71CFAA1B2978895000DF0E11 /* CurrencyArrayCacheTransformer.swift in Sources */,
 				7169F09C297573F100CFA3D7 /* NetworkManager.swift in Sources */,
 				7169F06B2975733F00CFA3D7 /* SceneDelegate.swift in Sources */,
+				71737428297E790E005C96AB /* Strings.swift in Sources */,
+				71737425297E7796005C96AB /* DataForCacheModel.swift in Sources */,
 				7169F0A4297578D800CFA3D7 /* CurrencyCollectionViewCell.swift in Sources */,
 				7169F0732975733F00CFA3D7 /* ExchangeCurrency.xcdatamodeld in Sources */,
 				7169F0A22975768C00CFA3D7 /* ParsedCurrencyData.swift in Sources */,

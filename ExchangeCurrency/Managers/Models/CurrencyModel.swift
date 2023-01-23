@@ -38,12 +38,3 @@ struct Valute: Decodable {
         case previous = "Previous"
     }
 }
-
-// MARK: - Format data for cache
-public class DataForCache: NSObject {
-    var data: [String: Valute]
-    
-    init(data: [String: Valute]) {
-        self.data = data
-    }
-}

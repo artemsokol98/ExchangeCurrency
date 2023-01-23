@@ -26,7 +26,7 @@ class MainViewModel: MainViewModelProtocol {
                     switch result {
                     case .success(let data):
                         guard let data = data as? Currency else { print("Casting failed"); return }
-                        self.parsedData = self.parseFetchedData(data: data)
+                        self.parsedData = self.parseOnlyValuteDate(data: data.valute)
                         if url.contains("www.cbr-xml-daily.ru/archive/") {
                             DataManager.shared.createNewItemForCurrency(urlStringWithDate: url, valute: data.valute)
                         }
@@ -39,19 +39,6 @@ class MainViewModel: MainViewModelProtocol {
         }
     }
 
-    func parseFetchedData(data: Currency) -> [ParsedCurrencyData] {
-        var parsedData = [ParsedCurrencyData]()
-        for item in data.valute {
-            let data = ParsedCurrencyData(
-                charCode: item.value.charCode,
-                value: item.value.value,
-                name: item.value.name
-            )
-            parsedData.append(data)
-        }
-        return parsedData
-    }
-    
     func parseOnlyValuteDate(data: [String: Valute]) -> [ParsedCurrencyData] {
         var parsedData = [ParsedCurrencyData]()
         for item in data {

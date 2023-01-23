@@ -14,7 +14,7 @@ class InfoConverterTableViewCell: UITableViewCell {
     lazy var nameCurrency: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 15.0, weight: .semibold)
+        label.font = .systemFont(ofSize: Constants.smallFontSize, weight: .semibold)
         return label
     }()
     
@@ -25,7 +25,7 @@ class InfoConverterTableViewCell: UITableViewCell {
     
     lazy var valueCurrency: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 30.0, weight: .semibold)
+        label.font = .systemFont(ofSize: Constants.bigFontSize, weight: .semibold)
         return label
     }()
     
@@ -50,21 +50,21 @@ class InfoConverterTableViewCell: UITableViewCell {
         valueCurrency.translatesAutoresizingMaskIntoConstraints = false
         
         let nameCurrencyConstraints = [
-            nameCurrency.topAnchor.constraint(equalTo: contentView.topAnchor, constant: contentView.bounds.height * 0.05),
-            nameCurrency.bottomAnchor.constraint(equalTo: labelCourse.topAnchor, constant: -contentView.bounds.height * 0.05),
-            nameCurrency.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * 0.05),
-            nameCurrency.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -contentView.bounds.width * 0.05)
+            nameCurrency.topAnchor.constraint(equalTo: contentView.topAnchor, constant: contentView.bounds.height * Constants.rowPadding),
+            nameCurrency.bottomAnchor.constraint(equalTo: labelCourse.topAnchor, constant: -contentView.bounds.height * Constants.rowPadding),
+            nameCurrency.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * Constants.rowPadding),
+            nameCurrency.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -contentView.bounds.width * Constants.rowPadding)
         ]
         
         let labelCourseConstraints = [
             labelCourse.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            labelCourse.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * 0.05)
+            labelCourse.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * Constants.rowPadding)
         ]
         
         let valueCurrencyConstraints = [
-            valueCurrency.topAnchor.constraint(equalTo: labelCourse.bottomAnchor, constant: -contentView.bounds.height * 0.05),
-            valueCurrency.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: contentView.bounds.height * 0.05),
-            valueCurrency.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * 0.05)
+            valueCurrency.topAnchor.constraint(equalTo: labelCourse.bottomAnchor, constant: -contentView.bounds.height * Constants.rowPadding),
+            valueCurrency.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: contentView.bounds.height * Constants.rowPadding),
+            valueCurrency.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * Constants.rowPadding)
         ]
         
         NSLayoutConstraint.activate(nameCurrencyConstraints)

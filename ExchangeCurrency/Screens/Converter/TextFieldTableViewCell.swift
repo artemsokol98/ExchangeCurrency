@@ -25,7 +25,7 @@ class TextFieldTableViewCell: UITableViewCell {
     lazy var textFieldValue: UITextField = {
         let textField = UITextField()
         textField.placeholder = "0.0"
-        textField.font = .systemFont(ofSize: 30.0, weight: .semibold)
+        textField.font = .systemFont(ofSize: Constants.bigFontSize, weight: .semibold)
         textField.keyboardType = .decimalPad
         
         let bottomLine = CALayer()
@@ -58,14 +58,14 @@ class TextFieldTableViewCell: UITableViewCell {
         textFieldValue.translatesAutoresizingMaskIntoConstraints = false
         
         let charCodeLabelConstraints = [
-            charCodeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * 0.05),
-            charCodeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: contentView.bounds.height * 0.05),
-            charCodeLabel.bottomAnchor.constraint(equalTo: textFieldValue.topAnchor, constant: contentView.bounds.height * 0.05)
+            charCodeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * Constants.rowPadding),
+            charCodeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: contentView.bounds.height * Constants.rowPadding),
+            charCodeLabel.bottomAnchor.constraint(equalTo: textFieldValue.topAnchor, constant: contentView.bounds.height * Constants.rowPadding)
         ]
         
         let textFieldValueConstraints = [
-            textFieldValue.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * 0.05),
-            textFieldValue.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -contentView.bounds.height * 0.05),
+            textFieldValue.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.bounds.width * Constants.rowPadding),
+            textFieldValue.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -contentView.bounds.height * Constants.rowPadding),
             textFieldValue.heightAnchor.constraint(equalToConstant: contentView.bounds.height * 0.4)
         ]
         
@@ -77,18 +77,4 @@ class TextFieldTableViewCell: UITableViewCell {
         charCodeLabel.text = valute?.charCode
         textFieldValue.text = String(format: "%.1f", valute?.value ?? 0.0)
     }
-}
-
-extension UITextField {
-    func underlined(color:UIColor){
-        let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = color.cgColor
-        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
-        border.borderWidth = width
-        self.layer.addSublayer(border)
-        self.layer.masksToBounds = true
-    }
-    
-
 }

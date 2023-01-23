@@ -13,7 +13,7 @@ class NetworkManager {
     let sessionConfig = URLSessionConfiguration.default
     
     func fetchInformation<T: Decodable>(urlString: String, expectingType: T.Type, completion: @escaping (Result<Any,Error>) -> Void) {
-        sessionConfig.timeoutIntervalForRequest = 15
+        sessionConfig.timeoutIntervalForRequest = Constants.numberOfWaitingSeconds
         let session = URLSession(configuration: sessionConfig)
         guard let url = URL(string: urlString) else { return }
         
