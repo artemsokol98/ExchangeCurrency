@@ -6,6 +6,7 @@
 * UIKit
 * MVVM
 * CoreData
+* iOS 15
 
 
 
