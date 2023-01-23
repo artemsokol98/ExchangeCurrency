@@ -28,6 +28,9 @@
 		7169F0B12975B8E600CFA3D7 /* ConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7169F0B02975B8E600CFA3D7 /* ConverterViewModel.swift */; };
 		71737425297E7796005C96AB /* DataForCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71737424297E7796005C96AB /* DataForCacheModel.swift */; };
 		71737428297E790E005C96AB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71737427297E790E005C96AB /* Strings.swift */; };
+		7173742B297E7C8E005C96AB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7173742A297E7C8E005C96AB /* README.md */; };
+		7173742E297E7D55005C96AB /* ExchangeMainScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7173742C297E7D55005C96AB /* ExchangeMainScreen.gif */; };
+		7173742F297E7D55005C96AB /* ExchangeConverterScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7173742D297E7D55005C96AB /* ExchangeConverterScreen.gif */; };
 		71CFAA102978817F00DF0E11 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFAA0F2978817F00DF0E11 /* DataManager.swift */; };
 		71CFAA1B2978895000DF0E11 /* CurrencyArrayCacheTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFAA1A2978895000DF0E11 /* CurrencyArrayCacheTransformer.swift */; };
 		71CFAA262978905A00DF0E11 /* CurrencyArrayCache+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFAA242978905A00DF0E11 /* CurrencyArrayCache+CoreDataClass.swift */; };
@@ -79,6 +82,9 @@
 		7169F0B02975B8E600CFA3D7 /* ConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewModel.swift; sourceTree = "<group>"; };
 		71737424297E7796005C96AB /* DataForCacheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataForCacheModel.swift; sourceTree = "<group>"; };
 		71737427297E790E005C96AB /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		7173742A297E7C8E005C96AB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7173742C297E7D55005C96AB /* ExchangeMainScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ExchangeMainScreen.gif; sourceTree = "<group>"; };
+		7173742D297E7D55005C96AB /* ExchangeConverterScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ExchangeConverterScreen.gif; sourceTree = "<group>"; };
 		71CFAA0F2978817F00DF0E11 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		71CFAA1A2978895000DF0E11 /* CurrencyArrayCacheTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyArrayCacheTransformer.swift; sourceTree = "<group>"; };
 		71CFAA242978905A00DF0E11 /* CurrencyArrayCache+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyArrayCache+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -115,6 +121,8 @@
 		7169F05C2975733F00CFA3D7 = {
 			isa = PBXGroup;
 			children = (
+				7173742A297E7C8E005C96AB /* README.md */,
+				71737429297E7C6C005C96AB /* Resources */,
 				7169F0672975733F00CFA3D7 /* ExchangeCurrency */,
 				7169F0812975734000CFA3D7 /* ExchangeCurrencyTests */,
 				7169F08B2975734100CFA3D7 /* ExchangeCurrencyUITests */,
@@ -222,6 +230,15 @@
 				7169F09D2975745600CFA3D7 /* CurrencyModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		71737429297E7C6C005C96AB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7173742D297E7D55005C96AB /* ExchangeConverterScreen.gif */,
+				7173742C297E7D55005C96AB /* ExchangeMainScreen.gif */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		71CFAA112978844B00DF0E11 /* Cache */ = {
@@ -351,7 +368,10 @@
 			files = (
 				7169F0782975734000CFA3D7 /* LaunchScreen.storyboard in Resources */,
 				7169F0752975734000CFA3D7 /* Assets.xcassets in Resources */,
+				7173742B297E7C8E005C96AB /* README.md in Resources */,
 				7169F0702975733F00CFA3D7 /* Main.storyboard in Resources */,
+				7173742F297E7D55005C96AB /* ExchangeConverterScreen.gif in Resources */,
+				7173742E297E7D55005C96AB /* ExchangeMainScreen.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
