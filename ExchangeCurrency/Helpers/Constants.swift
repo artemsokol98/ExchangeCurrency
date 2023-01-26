@@ -13,6 +13,7 @@ class Constants {
     static let mainVCSpacingBetweenCells: CGFloat = 10.0
     static let numberOfItemsPerRow: CGFloat = 3
     static let heightOfDatePicker: CGFloat = 200
+    static let spaceEdgeForCollectionView: CGFloat = 20.0
     
     // MARK: - Converter View Converter
     static let minimalHeightOfScreenForMovingUp: CGFloat = 600

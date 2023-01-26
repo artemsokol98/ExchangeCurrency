@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    private let spacing: CGFloat = 20.0
+    private let spacing: CGFloat = Constants.spaceEdgeForCollectionView
     var viewModel: MainViewModelProtocol?
     let spinner = UIActivityIndicatorView(style: .large)
     
