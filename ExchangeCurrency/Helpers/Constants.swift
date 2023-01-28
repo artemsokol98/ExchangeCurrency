@@ -20,6 +20,7 @@ class Constants {
     static let heightOfFirstRow: CGFloat = 200
     static let heightOfSecondAndThirdRow: CGFloat = 100
     static let rowPadding = 0.05
+    static let numberOfRowsInConverter = 3
     
     // MARK: - Font size
     static let bigFontSize = 30.0

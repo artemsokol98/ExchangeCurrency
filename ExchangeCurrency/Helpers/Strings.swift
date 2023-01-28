@@ -12,4 +12,8 @@ class Strings {
     static let dailyCourseApiString = "https://www.cbr-xml-daily.ru/daily_json.js"
     static let firstPartForPreviousDateApiString = "https://www.cbr-xml-daily.ru/archive/"
     static let secondPartForPreviousDateApiString = "/daily_json.js"
+    
+    // MARK: - Converter VC
+    static let russianRubleCode = "RUB"
+    static let russianRubleName = "Российский рубль"
 }

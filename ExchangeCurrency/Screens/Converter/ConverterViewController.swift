@@ -74,7 +74,7 @@ extension ConverterViewController: UITableViewDelegate {
 
 extension ConverterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        Constants.numberOfRowsInConverter
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
@@ -84,7 +84,7 @@ extension ConverterViewController: UITableViewDataSource {
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { return UITableViewCell() }
-            cell.configureCell(valute: ParsedCurrencyData(charCode: "RUB", value: viewModel?.ruble ?? 0.0, name: "Российский рубль"))
+            cell.configureCell(valute: ParsedCurrencyData(charCode: Strings.russianRubleCode, value: viewModel?.ruble ?? 0.0, name: Strings.russianRubleName))
             cell.textFieldDelegate = self
             cell.textFieldValue.delegate = self
             return cell
