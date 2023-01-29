@@ -36,14 +36,12 @@ class ConverterViewController: UIViewController {
         super.viewDidLayoutSubviews()
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
         let tableViewConstraints = [
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
-        
         NSLayoutConstraint.activate(tableViewConstraints)
     }
     
